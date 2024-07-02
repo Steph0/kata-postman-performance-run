@@ -24,7 +24,7 @@ transition: slide-up
 mdc: true
 ---
 
-# Kata Postman Performance
+# Kata Postman <br> To avoid a _kata_-strophe
 
 From your swagger.json to a benchmark.
 
