@@ -26,7 +26,7 @@ mdc: true
 
 # Kata Postman <br> To avoid a _kata_-strophe
 
-From your swagger.json to a benchmark.
+From a simple swagger.json to a benchmark.
 
 <div class="pt-12">
   <span @click="$slidev.nav.next" class="px-2 py-1 rounded cursor-pointer" hover="bg-white bg-opacity-10">
@@ -59,9 +59,13 @@ This kata will cover how to
 * Turn a swagger into a Postman collection
 * Create reusable variables and environments for your requests
 * Pre-authenticate your requests thanks to the "pre-request scripts"
-* Run a randomized performance tests and tune its scenario
+* Run a randomized performance tests and fine-tune its scenario
 * Compare performance tests runs between them
 
+<br>
+
+<notes>This kata has been constructed using the <a href="https://github.com/1024pix/pix/">Pix project</a> sources.<br>Nonetheless, each steps can be followed using any other API endpoints.
+</notes>
 
 ---
 hideInToc: true
@@ -75,7 +79,7 @@ hideInToc: true
 
 <br>
 
-**Ready ? Let's go <i class="light-icon-rocket"></i>**
+<b style="color: green">Ready ? <br/><span v-click >Let's go !<i class="light-icon-rocket"></i></span></b>
 
 ---
 hideInToc: true
@@ -85,7 +89,41 @@ hideInToc: true
 
 <br>
 
-<Toc minDepth="1" maxDepth="2"></Toc>
+<Toc minDepth="1" maxDepth="1"></Toc>
 
 ---
-# Turn a swagger into a Postman collection
+layout: center
+---
+
+# From a swagger to a Postman Collection
+
+---
+layout: image-right
+image: '../assets/images/import-collection.png'
+equal: false
+---
+
+## Your Swagger as a Postman collection
+
+Why create manually a Postman collection when your project already do the job for you ?
+
+* First you need a Swagger definition
+  * For the Pix project, it is under the endpoint `/api/documentation`
+* Load it effortlessly into [Postman <i class="light-icon-external-link"></i>](https://learning.postman.com/docs/designing-and-developing-your-api/importing-an-api/)
+* **This step is OK if your Postman now looks alike the image**
+
+---
+layout: image-right
+image: '../assets/images/feature-toggles.png'
+equal: false
+---
+
+## Discover variables
+
+Depending on your Swagger, default variables are provided
+
+* Try running a request without authentication, like <pre>Collection / feature-toggles / get Featuretoggles</pre>
+* Is it working ? Can you find where the main **base url** is defined ?
+  * [Hint <i class="light-icon-external-link"></i>](https://learning.postman.com/docs/sending-requests/variables/variables-intro/)
+* Try setting a variable so that you can make a request run successfully
+* Can you name the **three levels** of variables in Postman ?
