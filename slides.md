@@ -79,7 +79,7 @@ hideInToc: true
 
 <br>
 
-<b style="color: green">Ready ? <br/><span v-click >Let's go !<i class="light-icon-rocket"></i></span></b>
+<span class="success">Ready ? <br/><span v-click >Let's go !<i class="light-icon-rocket"></i></span></span>
 
 ---
 hideInToc: true
@@ -108,7 +108,7 @@ equal: false
 Why create manually a Postman collection when your project already do the job for you ?
 
 * First you need a Swagger definition
-  * For the Pix project, it is under the endpoint `/api/documentation`
+  * For the Pix project, it is under the endpoint [api.pix.fr/api/documentation](https://api.pix.fr/api/documentation)
 * Load it effortlessly into [Postman <i class="light-icon-external-link"></i>](https://learning.postman.com/docs/designing-and-developing-your-api/importing-an-api/)
 * **This step is OK if your Postman now looks alike the image**
 
@@ -122,8 +122,10 @@ equal: false
 
 Depending on your Swagger, default variables are provided
 
-* Try running a request without authentication, like <pre>Collection / feature-toggles / get Featuretoggles</pre>
-* Is it working ? Can you find where the main **base url** is defined ?
-  * [Hint <i class="light-icon-external-link"></i>](https://learning.postman.com/docs/sending-requests/variables/variables-intro/)
+* Try [running a request](https://learning.postman.com/docs/sending-requests/requests/) without authentication, like <pre>Collection / feature-toggles / get Featuretoggles</pre>
+* <span class="error">Is it working ?</span> Can you find where the main **base url** is defined ?
+  * [Hint <i class="light-icon-external-link"></i>](https://learning.postman.com/docs/sending-requests/variables/variables/#defining-collection-variables)
 * Try setting a variable so that you can make a request run successfully
-* Can you name the **three levels** of variables in Postman ?
+  * `https://api.pix.fr/api/`
+* Can you name the **six levels** of variables in Postman ?
+  * [Hint <i class="light-icon-external-link"></i>](https://learning.postman.com/docs/sending-requests/variables/variables/#variable-scopes)
