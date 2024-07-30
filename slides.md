@@ -73,7 +73,7 @@ hideInToc: true
 
 # What is expected of the participants
 
-* Practice, practice, practice, in order to go through the steps of this Kata
+* **Practice, practice, practice**, in order to go through the steps of this Kata
 * Sharing (and caring) among participants is strongly encouraged (ideas, tips, discoveries)
 * [Law of Two feet](https://www.agilecentre.com/resources/article/meetings-with-feet/) applies
 
@@ -105,6 +105,8 @@ equal: false
 
 ## Your Swagger as a Postman collection
 
+**GOAL:** import a swagger into Postman for a speedy setup
+
 Why create manually a Postman collection when your project already do the job for you ?
 
 * First you need a Swagger definition
@@ -120,12 +122,14 @@ equal: false
 
 ## Discover variables
 
+**GOAL:** edit default Collection variables
+
 Depending on your Swagger, default variables are provided
 
 * Try [running a request](https://learning.postman.com/docs/sending-requests/requests/) without authentication, like <pre>Collection / feature-toggles / get Featuretoggles</pre>
 * <span class="error">Is it working ?</span> Can you find where the main **base url** is defined ?
   * <Hint url='https://learning.postman.com/docs/sending-requests/variables/variables/#defining-collection-variables' />
-* Try setting a variable so that you can make a request run successfully
+* Try setting a variable so that you can make a request run successfully with value:
   * `https://api.pix.fr/api`
 * Can you name the **six levels** of variables in Postman ?
   * <Hint url='https://learning.postman.com/docs/sending-requests/variables/variables/#variable-scopes' />
@@ -136,7 +140,9 @@ image: './images/create-environment.png'
 equal: false
 ---
 
-## Discover environments
+## Discover environments #1
+
+**GOAL:** create on-demande sets of variables and use it in your requests
 
 * Create an environment named "Integration"
   * <Hint url='https://learning.postman.com/docs/sending-requests/variables/managing-environments/#create-an-environment' />
@@ -144,3 +150,75 @@ equal: false
   * `https://api.integration.pix.fr/api`
 * Try <b>re-</b>running the feature toggle request
   * <span class="success">show that it uses the new baseUrl</span>
+---
+layout: image-right
+image: './images/secrets.png'
+equal: false
+---
+
+## Discover environments #2
+
+**GOAL:** we can hide secret variables
+
+* Create in your **Integration** env now the following variables
+  * currentUser (default), currentPassword **(secret)**, currentScope (default)
+  * Fill in with some random values
+  * <span class="success">Is the currentPassword masked ?</span>
+* Create in **globals** variables the following variable
+  * BEARER_TOKEN with default value PREREQUEST_SCRIPT
+* Your config should now look like the image
+
+---
+layout: image-right
+image: './images/certification-point-of-contacts-KO.png'
+equal: false
+---
+
+## Discover environments #3
+
+**GOAL:** use a global variable in your Authorization header
+
+* Find the Authorization tab at the top level of your Collection
+  * <Hint url='https://learning.postman.com/docs/sending-requests/authorization/specifying-authorization-details/#inherit-authorization' />
+  * Set it up to **Type** 'Bearer token' and the **Token** to `{{BEARER_TOKEN}}`
+* Try running the 'certification-point-of-contacts' request of your Collection
+  * <span class="error">Is it working ?</span>
+  * Note: if error message is "Missing authentication" your BEARER_TOKEN is not properly setup
+
+---
+
+## Discover pre-request scripts #1
+
+TODO: to complete
+
+````md magic-move {lines: true}
+```js {*|2|12|13|14}
+pm.sendRequest({
+    url: pm.environment.get("baseUrl")+"/token",
+    method: 'POST',
+    header: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    body: {
+        mode: 'urlencoded',
+        urlencoded: [
+            {key: 'grant_type', value: 'password'},
+            {key: 'scope', value: pm.environment.get("currentScope")},
+            {key: 'username', value: pm.environment.get("currentUser")},
+            {key: 'password', value: pm.environment.get("currentPassword")}
+        ]
+    }
+},
+    (err, res) => {
+        // Set BEARERTOKEN
+        pm.globals.set("BEARERTOKEN", res.json().access_token)
+        // console.log(res.json());
+});
+```
+````
+
+---
+---
+
+## Discover pre-request scripts #2
