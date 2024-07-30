@@ -124,8 +124,23 @@ Depending on your Swagger, default variables are provided
 
 * Try [running a request](https://learning.postman.com/docs/sending-requests/requests/) without authentication, like <pre>Collection / feature-toggles / get Featuretoggles</pre>
 * <span class="error">Is it working ?</span> Can you find where the main **base url** is defined ?
-  * [Hint <i class="light-icon-external-link"></i>](https://learning.postman.com/docs/sending-requests/variables/variables/#defining-collection-variables)
+  * <Hint url='https://learning.postman.com/docs/sending-requests/variables/variables/#defining-collection-variables' />
 * Try setting a variable so that you can make a request run successfully
-  * `https://api.pix.fr/api/`
+  * `https://api.pix.fr/api`
 * Can you name the **six levels** of variables in Postman ?
-  * [Hint <i class="light-icon-external-link"></i>](https://learning.postman.com/docs/sending-requests/variables/variables/#variable-scopes)
+  * <Hint url='https://learning.postman.com/docs/sending-requests/variables/variables/#variable-scopes' />
+
+---
+layout: image-right
+image: '../assets/images/create-environment.png'
+equal: false
+---
+
+## Discover environments
+
+* Create an environment named "Integration"
+  * <Hint url='https://learning.postman.com/docs/sending-requests/variables/managing-environments/#create-an-environment' />
+* Add an environment variable named "baseUrl" with value
+  * `https://api.integration.pix.fr/api`
+* Try <b>re-</b>running the feature toggle request
+  * <span class="success">show that it uses the new baseUrl</span>
