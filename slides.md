@@ -99,7 +99,7 @@ layout: center
 
 ---
 layout: image-right
-image: '../assets/images/import-collection.png'
+image: './images/import-collection.png'
 equal: false
 ---
 
@@ -114,7 +114,7 @@ Why create manually a Postman collection when your project already do the job fo
 
 ---
 layout: image-right
-image: '../assets/images/feature-toggles.png'
+image: './images/feature-toggles.png'
 equal: false
 ---
 
@@ -132,7 +132,7 @@ Depending on your Swagger, default variables are provided
 
 ---
 layout: image-right
-image: '../assets/images/create-environment.png'
+image: './images/create-environment.png'
 equal: false
 ---
 
